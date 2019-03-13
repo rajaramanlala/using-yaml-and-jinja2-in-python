@@ -1,0 +1,40 @@
+hostname {{ name }}
+
+interface Loopback3804
+ ip address {{ loopback[0] }} 255.255.255.255
+ no sh 
+interface Loopback3805
+ ip address {{ loopback[1] }} 255.255.255.255
+ no sh
+interface Loopback3806
+ ip address {{ loopback[2] }} 255.255.255.255
+ no sh
+
+{% for vlan, name in vlans.items() %}
+ vlan {{ vlan }}
+ name {{ name }}
+{% endfor %}
+
+interface vlan3804
+ ip address {{ id[0] }} 255.255.255.255
+ vrf {{ vrf[0] }}
+ no shut
+
+interface vlan3805
+ ip address {{ id[1] }} 255.255.255.255
+ vrf {{ vrf[1] }}
+ no shut
+
+interface vlan3806
+ ip address {{ id[2] }} 255.255.255.255
+ vrf {{ vrf[2] }}
+ no shut 
+
+router bgp {{ local_asn }}
+   {% for neighbor in bgp.neighbors -%}
+   vrf {{ neighbor.vrf }}
+   router-id {{ neighbor.id }}
+   no graceful-restart
+   address-family ipv4 unicast
+   neighbor {{ neighbor.address }} remote-as {{ neighbor.remoteas }}
+   {% endfor -%}
