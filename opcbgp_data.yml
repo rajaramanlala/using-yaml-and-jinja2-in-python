@@ -1,11 +1,11 @@
 ---
 id: [10.55.207.201, 10.55.207.217, 10.55.207.177]
 loopback: [10.55.207.67, 10.55.207.70, 10.55.207.72]
-name: iad37-toa-dist-1
+name: dist-1
 local_asn : 64705
 srx_asn : 64703
 asa_asn : 64704
-vrf: [us6-domvsm-toa-v803-1, us6-ilomexamgmt-toa-v801, us6-privateda-toa-v800-1]
+vrf: [us6-domvsm-v803-1, us6-ilomexamgmt-v801, us6-privateda-v800-1]
 vlans:
   3804: transit_1
   3805: transit_2
@@ -13,6 +13,6 @@ vlans:
 
 bgp:
   neighbors:
-    -  {'address': 10.55.207.202 , 'id': 10.55.207.67 , 'remeteas': 64703 , 'vrf': us6-domvsm-toa-v803-1}
-    -  {'address': 10.55.207.218 , 'id': 10.55.207.70 , 'remoteas': 64705 , 'vrf': us6-ilomexamgmt-toa-v801}
-    -  {'address': 10.55.207.178 , 'id': 10.55.207.72 , 'remoteas': 64704 , 'vrf': us6-privateda-toa-v800-1}
+    -  {'address': 10.55.207.202 , 'id': 10.55.207.67 , 'remeteas': 64703 , 'vrf': us6-domvsm-v803-1}
+    -  {'address': 10.55.207.218 , 'id': 10.55.207.70 , 'remoteas': 64705 , 'vrf': us6-ilomexamgmt-v801}
+    -  {'address': 10.55.207.178 , 'id': 10.55.207.72 , 'remoteas': 64704 , 'vrf': us6-privateda-v800-1}
